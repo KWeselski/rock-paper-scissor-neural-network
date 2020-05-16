@@ -43,11 +43,14 @@ class App(QMainWindow):
         self.capture=None
         self.initUI()
         self.buttonExit.clicked.connect(self.push_Exit)
+        self.buttonStart.clicked.connect(self.push_Start)
         self.event = threading.Event()
         self.countdown_thread = threading.Thread(target=self.timer_Down)
         self.startCam = threading.Thread(target=self.start_Webcam)
-        self.countdown_thread.start()
         self.startCam.start()
+    def push_Start(self):
+        self.countdown_thread.start()
+        
 
     def push_Exit(self):
         """
